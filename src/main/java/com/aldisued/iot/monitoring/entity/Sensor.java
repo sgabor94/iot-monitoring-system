@@ -1,11 +1,17 @@
 package com.aldisued.iot.monitoring.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -21,8 +27,15 @@ public class Sensor {
   @Column(nullable = false)
   private String name;
 
+  @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   private SensorType type;
+
+  @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<Alert> alerts = new ArrayList<>();
+
+  @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<SensorReading> sensorReadings = new ArrayList<>();
 
   public Sensor() {}
 
@@ -56,22 +69,19 @@ public class Sensor {
   }
 
   public List<Alert> getAlerts() {
-    //TODO: Task 2
-    return null;
+    return alerts;
   }
 
   public void setAlerts(List<Alert> alerts) {
-    //TODO: Task 2
+    this.alerts = alerts;
   }
 
   public List<SensorReading> getSensorReadings() {
-    //TODO: Task 2
-    return null;
+    return sensorReadings;
   }
 
-  public void setSensorReadings(
-      List<SensorReading> sensorReadings) {
-    //TODO: Task 2
+  public void setSensorReadings(List<SensorReading> sensorReadings) {
+    this.sensorReadings = sensorReadings;
   }
 
   @Override
