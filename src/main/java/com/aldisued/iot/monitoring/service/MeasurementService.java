@@ -23,8 +23,6 @@ public class MeasurementService {
   }
 
   public Optional<Double> getAverageTemperature(LocalDateTime from, LocalDateTime to) {
-    // TODO: Task 7
-    return Optional.empty();
+    return sensorReadingRepository.findAverageValueBySensorTypeAndTimestampBetween(SensorType.TEMPERATURE, from, to);
   }
-
 }
