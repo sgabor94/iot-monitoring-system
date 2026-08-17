@@ -9,4 +9,6 @@ import org.mapstruct.Mapper;
 public interface AlertMapper {
 
     AlertDto toDTO(Alert alert);
+
+    Alert toEntity(AlertDto alertDto);
 }
