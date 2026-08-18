@@ -152,7 +152,7 @@ Sensor data is often noisy and may contain outliers. To improve the accuracy of 
 - Deviation: `0.2` (20%)
 - Average = `(10 + 12 + 20) / 3 = 14.0`
 - Acceptable range = `14.0 - 20% * 14.0, 14.0 + 20% * 14.0]` = `[11.2, 16.8]`
-- Filtered result: `[12.0]` → only these values remain outside the acceptable range and should be excluded.
+- Filtered result: `[12.0]` → only these values remain inside the acceptable range and should be included.
 
 You can test your implementation by running the `Task9Tests` test class.
 
